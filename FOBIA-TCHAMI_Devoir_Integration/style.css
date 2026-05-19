@@ -1,0 +1,267 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif
+}
+body {
+    background-color: #f5f5f5;
+    opacity: 1;
+    background-image: url(images/profil.jpg);
+    background-size: cover;
+    font-family: Arial,  Helvetica,  sans-serif;
+}
+.container {
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+.container img {
+    width: 130px;
+    justify-content: left;
+    margin-bottom: 3px;
+}
+.container aside div {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.container aside div a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+.container aside div a:hover {
+    color:chartreuse;
+}
+.abonnement{
+    background: #2563eb;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-align: left;
+}
+.adrien {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 70px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 500px;
+}
+.adrien h2 {
+    color: #3b82f6;
+    font-size: 15px;
+    margon-bottom: 15px;
+    text-align: left;
+}
+.adrien h1 {
+    color:white;
+    text-align: left;
+}
+.adrien p {
+    color: #f5f5f5;
+    text-align: left;
+}
+.adrien nav {
+    display: flex;
+    gap: 20px;
+    text-align: left;
+}
+.adrien nav a{
+    text-decoration: none;
+    border-radius: 6px;
+    fony-weight: bold;
+    padding: 15px;
+    text-align: left;
+    justify-content: left;
+}
+.adrien nav main a {
+    color: white;
+    text-align: left;
+}
+.explore {
+    background: blue;
+    padding: 0px;
+    border-radius: 7px;
+    text-align: left;
+}
+.adrien nav main a:hover {
+    background: #1dd855;
+}
+.adrien nav aside a {
+    color: blue;
+}
+.adrien nav aside a:hover {
+    background: #1dd855;
+}
+.contain {
+    background: #f5f5f5;
+}
+.domaines {
+    padding: 10px;
+}
+.AD {
+    padding: 1px;
+}
+.AD h3 {
+    color: #2563eb;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.AD h2 {
+    color: black;
+    margin-bottom: 14px;
+    text-align: center;
+    font-size: 23px;
+}
+.card {
+    display: inline-flex;
+    
+}
+.card main {
+    flex: 3;
+}
+.container {
+    flex-direction: row;
+}
+.logo {
+    display: flex;
+    gap: 18px;
+    background: white;
+    padding: 25px;
+    border-radius: 13px;
+    box-shadow: 0 4px;  
+    flex-direction: row; 
+}
+.logo main {
+    width: 3px;
+}
+.logo img {
+    width: 75px;
+    height: 60px;
+    border-radius: 10px;
+}
+.logos aside {
+    color: black;
+    width: 3px;
+}
+.logo h4 {
+    text-align: left;
+    color: black;
+    margin-bottom: 15px;
+}
+.logo p {
+    color: black;
+    text-align: left;
+    line-height: 1.6;
+    margin-bottom: 1Opx;
+}
+.logo:hover{
+    width: 89px;
+}
+
+.logo a {
+    text-decoration: none;
+    color: #2563eb;
+    font-weight: bold;
+}
+.logo a:hover{
+    text-decoration: none;
+    color: #1dd855;
+}
+
+.Last_articles {
+    padding: 4px;
+}
+h2 {
+    font-size: 3px;
+    margin-bottom: 0px;
+    text-align: left;  
+}
+a {
+    font-weight:bold;
+    display: flex;
+    color: #2563eb;
+    margin-bottom: 4px;
+    text-decoration: none;
+}
+
+}
+.articles h2 {
+    font-size: 200px;
+    margin-bottom: 30px;
+    color: black;
+    line-height: 1.8;
+}
+.articles a {
+    text-align: right;
+    margin-bottom: 10px;
+}
+.articles p {
+    line-height: 1.8;
+    color: black;
+    text-align: right;
+}
+.links {
+    color:white;
+    text-align: center;
+    margin-inline: 150px;
+}
+.links h3 {
+    font-size: large;
+}
+ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;  
+}
+.links main {
+    flex: 2;
+    padding: 0px;
+}
+.links img {
+    font-size:ç0px;
+    margin-bottom: 3px;
+    width: 20px;
+    flex-direction: column-reverse;
+}
+.links aside {
+    padding: 0px;
+}
+img {
+    justify-content: right;
+    margin-bottom: 3px;
+    font-size: 13px;
+}
+p {
+    color: #f5f5f5;
+    text-align: right;
+}
+footer {
+    background: #020b2d;
+    color:white;
+    padding: 0px;
+    flex-direction: row;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+}
+@media (max-width: 768px) {
+    .card{
+        flex-direction: column;
+        align-items: center;
+    }
+    .card{
+        width: 100%;
+        max-width: 350px;
+    }
+    .h2{
+        font-size: 28px;
+    }
+}
