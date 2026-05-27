@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="Width=device-width,initial-scale=1.0">
+        <title>Contact - Mon mini-site</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="page">
+         <header>
+         <h1>Mon mini-site web</h1>
+        </header>
+        <nav>
+            <a href="index.html">Acceuil</a>
+            <a href="presentation.html">Presentation</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+       <section class="carte"> 
+  <h2>Formulaire d'inscription dynamique</h2> 
+  <p>Ce formulaire utilise JavaScript pour vérifier dynamiquement les informations saisies.</p> <!-- Explique le rôle du formulaire -->
+
+  <label for="nom">Nom complet :</label> <!-- Affiche le libellé du champ nom -->
+  <input type="text" id="nom" placeholder="Entrez votre nom complet" oninput="verifierNom()"> 
+  <p id="erreurNom"></p> 
+
+  <label for="email">Adresse email :</label> <!-- Affiche le libellé du champ email -->
+  <input type="email" id="email" placeholder="Exemple : etudiant@gmail.com"> <!-- Crée un champ email -->
+  <p id="erreurEmail"></p> <!-- Zone d'affichage des erreurs du champ email -->
+
+  <label for="motDePasse">Mot de passe :</label> <!-- Affiche le libellé du champ mot de passe -->
+  <input type="password" id="motDePasse" placeholder="Entrez un mot de passe"> <!-- Crée un champ mot de passe -->
+  <p id="erreurMotDePasse"></p> <!-- Zone d'affichage des erreurs du mot de passe -->
+
+  <label for="confirmationMotDePasse">Confirmation du mot de passe :</label> <!-- Affiche le libellé du champ confirmation -->
+  <input type="password" id="confirmationMotDePasse" placeholder="Confirmez le mot de passe"> <!-- Crée un champ de confirmation -->
+  <p id="erreurConfirmation"></p> <!-- Zone d'affichage des erreurs de confirmation -->
+
+  <button onclick="validerFormulaire()">Valider le formulaire</button> <!-- Appelle la fonction de validation -->
+  <button onclick="reinitialiserFormulaire()">Réinitialiser</button> <!-- Appelle la fonction de réinitialisation -->
+
+  <p id="messageFinal"></p> <!-- Zone d'affichage du message global -->
+
+</section> 
+<script>
+    function validerFormulaire() {
+        let nom = document.getElementById("nom").value; // Récupère le contenu saisi dans le champ nom
+        let email = document.getElementById("email").value; // Récupère le contenu saisi dans le champ email
+        let motDePasse = document.getElementById("motDePasse").value; // Récupère le mot de passe
+        let confirmation = document.getElementById("confirmationMotDePasse").value;
+        document.getElementById("erreurNom").textContent = ""; // Efface les anciennes erreurs
+        document.getElementById("erreurEmail").textContent = "";
+        document.getElementById("erreurMotDePasse").textContent = "";
+        document.getElementById("erreurConfirmation").textContent = "";
+        document.getElementById("messageFinal").textContent = "";
+if (nom === "") { // Vérifie le champ nom
+    document.getElementById("erreurNom").textContent = "Le nom est obligatoire.";
+    document.getElementById("nom").style.borderColor = "red";
+} else {
+    document.getElementById("nom").style.borderColor = "green";
+}
+
+if (email === "") { // Vérifie le champ email
+    document.getElementById("erreurEmail").textContent = "L'adresse email est obligatoire.";
+    document.getElementById("email").style.borderColor = "red";
+} else if (!email.includes("@")) {
+    document.getElementById("erreurEmail").textContent = "L'adresse email est invalide.";
+    document.getElementById("email").style.borderColor = "red";
+} else {
+    document.getElementById("email").style.borderColor = "green";
+}
+
+if (motDePasse.length < 6) { 
+    document.getElementById("erreurMotDePasse").textContent = "Le mot de passe doit contenir au moins 6 caractères.";
+document.getElementById("motDePasse").style.borderColor = "red";
+
+} else {
+    document.getElementById("motDePasse").style.borderColor = "green";
+}
+
+if (confirmation !== motDePasse) { // Vérifie la confirmation du mot de passe
+    document.getElementById("erreurConfirmation").textContent = "Les mots de passe ne correspondent pas.";
+    document.getElementById("confirmationMotDePasse").style.borderColor = "red";
+} else {
+    document.getElementById("confirmationMotDePasse").style.borderColor = "green";
+}
+
+if (
+    nom !== "" &&
+    email.includes("@") &&
+    motDePasse.length >= 6 &&
+    confirmation === motDePasse
+) { // Vérifie si toutes les conditions sont respectées
+
+    document.getElementById("messageFinal").textContent = "Le formulaire a été validé avec succès.";
+    document.getElementById("messageFinal").style.color = "green";
+} else {
+    document.getElementById("messageFinal").textContent = "Le formulaire contient des erreurs.";
+    document.getElementById("messageFinal").style.color = "red";
+
+}
+
+}
+
+    function reinitialiserFormulaire() {
+        document.getElementById("nom").value = ""; // Vide le champ nom
+        document.getElementById("email").value = ""; // Vide le champ email
+        document.getElementById("motDePasse").value = ""; // Vide le champ mot de passe
+        document.getElementById("confirmationMotDePasse").value = ""; // Vide le champ confirmation
+
+        document.getElementById("erreurNom").textContent = ""; // Efface les messages d'erreur
+        document.getElementById("erreurEmail").textContent = "";
+        document.getElementById("erreurMotDePasse").textContent = "";
+        document.getElementById("erreurConfirmation").textContent = "";
+        document.getElementById("messageFinal").textContent = "";
+
+        document.getElementById("nom").style.borderColor = "#ccc"; // Remet la bordure normale
+        document.getElementById("email").style.borderColor = "#ccc";
+        document.getElementById("motDePasse").style.borderColor = "#ccc";
+        document.getElementById("confirmationMotDePasse").style.borderColor = "#ccc";
+
+    }
+    function verifierNom() { // Déclare une fonction qui vérifie dynamiquement le champ nom
+
+let nom = document.getElementById("nom").value; // Récupère la valeur actuelle du champ
+
+if (nom.length < 3) { // Vérifie si le nom contient moins de 3 caractères
+document.getElementById("erreurNom").textContent = "Le nom est trop court."; // Affiche une erreur
+document.getElementById("nom").style.borderColor = "red"; // Met une bordure rouge
+} else {
+document.getElementById("erreurNom").textContent = ""; // Efface l'erreur
+document.getElementById("nom").style.borderColor = "green"; // Met une bordure verte
+}
+
+} 
+</script>
+    </body>
+</html>

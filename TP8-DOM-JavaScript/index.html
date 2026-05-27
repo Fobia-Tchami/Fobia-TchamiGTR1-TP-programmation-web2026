@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="Width=device-width,initial-scale=1.0">
+        <title>Accueil - Mon mini-site</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="page">
+        <header>
+         <h1>Mon mini-site web</h1>
+        </header>
+        <nav>
+            <a href="index.html">Acceuil</a>
+            <a href="presentation.html">Presentation</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="container">
+            <main>
+          <section class="carte"> <!-- Ouvre une carte destinée aux manipulations du DOM -->
+<h2>Laboratoire de manipulation du DOM</h2> <!-- Affiche le titre de la zone interactive -->
+<p id="texteDynamique">Ce texte initial sera modifié avec JavaScript.</p> <!-- Crée un paragraphe que JavaScript pourra modifier -->
+<button onclick="changerTexte()">Changer le texte</button> <!-- Appelle la fonction qui modifie le texte -->
+<button onclick="changerCouleur()">Changer la couleur</button> <!-- Appelle la fonction qui modifie la couleur -->
+<button onclick="changerStyle()">Changer le style complet</button> <!-- Appelle la fonction qui modifie plusieurs propriétés CSS -->
+<button onclick="masquerTexte()">Masquer</button> <!-- Appelle la fonction qui masque le paragraphe -->
+<button onclick="afficherTexte()">Afficher</button> <!-- Appelle la fonction qui affiche à nouveau le paragraphe -->
+<button onclick="reinitialiserTexte()">Réinitialiser</button>
+          </section>
+          <section class="carte"> <!-- Ouvre une carte destinée au compteur interactif -->
+  <h2>Compteur interactif</h2> <!-- Affiche le titre du compteur -->
+  <p>Ce compteur montre comment JavaScript peut conserver et modifier une valeur.</p> <!-- Explique le rôle du compteur -->
+  <p id="compteur">0</p> <!-- Affiche la valeur actuelle du compteur -->
+  <button onclick="incrementer()">Augmenter</button> <!-- Appelle la fonction pour incrémenter -->
+  <button onclick="decrementer()">Diminuer</button> <!-- Appelle la fonction qui diminue la valeur -->
+<button onclick="remettreCompteurAZero()">Remettre à zéro</button> <!-- Appelle la fonction qui remet le compteur à zéro -->
+</section> <!-- Ferme la carte du compteur -->
+
+<script>
+let valeurCompteur = 0; // Crée une variable globale qui stocke la valeur du compteur
+
+function incrementer() { // Déclare une fonction qui augmente le compteur
+  valeurCompteur = valeurCompteur + 1; // Ajoute 1 à la valeur actuelle
+  document.getElementById("compteur").textContent = valeurCompteur; // Affiche la nouvelle valeur dans la page
+} // Ferme la fonction incrementer
+
+function decrementer() { // Déclare une fonction qui diminue le compteur
+  valeurCompteur = valeurCompteur - 1; // Retire 1 à la valeur actuelle
+  document.getElementById("compteur").textContent = valeurCompteur; // Affiche la nouvelle valeur dans la page
+} // Ferme la fonction decrementer
+
+function remettreCompteurAZero() { // Déclare une fonction qui remet le compteur à zéro
+  valeurCompteur = 0; // Remet la variable à zéro
+  document.getElementById("compteur").textContent = valeurCompteur; // Affiche zéro dans la page
+} // Ferme la fonction remettreCompteurAZero
+</script>
+                <section class="carte">
+  <!-- Ouvre une section visuelle pour le programme JavaScript -->
+  <h2>Message dynamique avec JavaScript</h2>
+  <!-- Affiche le titre de l'activité -->
+  
+  <p>Cette zone permet d'afficher un message personnalisé selon le nom et le domaine choisi.</p>
+  <!-- Explique le fonctionnement attendu -->
+  
+  <label for="nomUtilisateur">Entrez votre nom :</label>
+  <!-- Affiche le libellé du champ nom -->
+  
+  <input type="text" id="nomUtilisateur" placeholder="Exemple : Yannick">
+  <!-- Crée un champ pour saisir le nom -->
+  
+  <label for="domaineUtilisateur">Choisissez votre domaine d'intérêt :</label>
+  <!-- Affiche le libellé de la liste déroulante -->
+  
+  <select id="domaineUtilisateur">
+    <!-- Crée une liste déroulante pour choisir un domaine -->
+    <option value="">-- Choisir un domaine --</option>
+    <!-- Crée une option vide par défaut -->
+    <option value="réseaux informatiques">Réseaux informatiques</option>
+    <!-- Crée une option pour les réseaux -->
+    <option value="cybersécurité">Cybersécurité</option>
+    <!-- Crée une option pour la cybersécurité -->
+    <option value="développement web">Développement web</option>
+    <!-- Crée une option pour le développement web -->
+    <option value="administration système">Administration système</option>
+    <!-- Crée une option pour l'administration système -->
+  </select>
+  <!-- Ferme la liste déroulante -->
+  
+  <button onclick="afficherMessage()">Afficher le message</button>
+  <!-- Appelle la fonction JavaScript lors du clic -->
+  
+  <p id="messageResultat"></p>
+  <!-- Zone où le message dynamique sera affiché -->
+</section>
+<section class="carte"> <!-- Ouvre une carte destinée à l'ajout dynamique d'éléments -->
+  <h2>Ajout dynamique dans une liste</h2> <!-- Affiche le titre de la fonctionnalité -->
+  <p>Cette zone permet d'ajouter un équipement réseau dans une liste.</p> <!-- Explique le rôle de la zone -->
+  
+  <label for="equipement">Nom de l'équipement :</label> <!-- Affiche le libellé du champ -->
+  <input type="text" id="equipement" placeholder="Exemple : Routeur R1"> <!-- Crée un champ pour saisir un équipement -->
+  
+  <button onclick="ajouterEquipement()">Ajouter</button> <!-- Appelle la fonction qui ajoute l'équipement -->
+  <button onclick="viderListe()">Vider la liste</button> <!-- Appelle la fonction qui vide la liste -->
+  
+  <ul id="listeEquipements"></ul>
+  <p id="messageListe"></p> <!-- Crée une zone pour afficher les messages liés à la liste -->
+</section> <!-- Ferme la carte d'ajout dynamique -->
+
+<script>
+function ajouterEquipement() { // Déclare une fonction qui ajoute un équipement à la liste
+  let champ = document.getElementById("equipement"); // Récupère le champ de saisie
+  let nomEquipement = champ.value; // Récupère la valeur saisie dans le champ
+  let message = document.getElementById("messageListe"); // Récupère la zone de message
+  
+  if (nomEquipement === "") { // Vérifie si le champ est vide
+    message.textContent = "Veuillez saisir le nom d'un équipement."; // Affiche un message d'erreur
+    message.style.color = "red"; // Met le message d'erreur en rouge
+  } else { // Exécute ce bloc si un équipement a été saisi
+    let nouvelElement = document.createElement("li"); // Crée un nouvel élément de liste
+    nouvelElement.textContent = nomEquipement; // Place le nom de l'équipement dans le nouvel élément
+    document.getElementById("listeEquipements").appendChild(nouvelElement); // Ajoute l'élément dans la liste HTML
+    
+    message.textContent = "Équipement ajouté avec succès."; // Affiche un message de confirmation
+    message.style.color = "green"; // Met le message de confirmation en vert
+    champ.value = ""; // Vide le champ de saisie après ajout
+  } // Ferme la condition
+} // Ferme la fonction ajouterEquipement
+
+function viderListe() { // Déclare une fonction qui vide la liste des équipements
+  document.getElementById("listeEquipements").innerHTML = ""; // Supprime tout le contenu de la liste
+  document.getElementById("messageListe").textContent = "La liste a été vidée."; // Affiche un message de confirmation
+  document.getElementById("messageListe").style.color = "#0b3d91"; // Met le message en bleu
+} // Ferme la fonction viderListe
+</script>
+<section class="carte"> <!-- Ouvre une carte destinée à la modification d'image -->
+  <h2>Modification dynamique d'une image</h2> <!-- Affiche le titre de la section -->
+  <p>Cette zone montre comment JavaScript peut modifier l'attribut src d'une image.</p> <!-- Explique l'objectif de la manipulation -->
+  
+  <img id="imageDynamique" src="images/profil.jpg" alt="Image initiale" width="250"> <!-- Affiche une image modifiable par JavaScript -->
+  
+  <button onclick="afficherImageProfil()">Afficher image profil</button> <!-- Appelle la fonction qui affiche l'image profil -->
+  <button onclick="afficherImageReseau()">Afficher image réseau</button> <!-- Appelle la fonction qui affiche l'image réseau -->
+</section> <!-- Ferme la carte de modification d'image -->
+
+<script>
+function afficherImageProfil() { // Déclare une fonction qui affiche l'image profil
+  let image = document.getElementById("imageDynamique"); // Récupère l'image dynamique
+  image.src = "images/profil.jpg"; // Change le chemin de l'image vers profil.jpg
+  image.alt = "Image de profil"; // Modifie le texte alternatif de l'image
+} // Ferme la fonction afficherImageProfil
+
+function afficherImageReseau() { // Déclare une fonction qui affiche l'image réseau
+  let image = document.getElementById("imageDynamique"); // Récupère l'image dynamique
+  image.src = "images/reseau.jpg"; // Change le chemin de l'image vers reseau.jpg
+  image.alt = "Image représentant un réseau informatique"; // Modifie le texte alternatif de l'image
+} // Ferme la fonction afficherImageReseau
+</script>
+
+                <h2>Bienvenue</h2>
+                <p>Ce site a été amelioré avec Flexbox pour une meilleur organisation.</p>
+            </main>
+            <aside>
+                <h2>Informations</h2>
+                <p>Cette zone peut contenir des informations supplémentaires.</p>
+            </aside>
+        </div>
+        <footer>
+            <p>  2026 - Mon mini-site</p>
+        </footer>
+        </div>
+       <script>
+  <!-- Ouvre la zone de code JavaScript -->
+  function afficherMessage() {
+    // Déclare la fonction qui affiche le message dynamique
+    let nom = document.getElementById("nomUtilisateur").value;
+    // Récupère le nom saisi par l'utilisateur
+    let domaine = document.getElementById("domaineUtilisateur").value;
+      let message = ""; // Crée une variable vide qui contiendra le message final
+  
+  if (nom === "" && domaine === "") { 
+    // Vérifie si le nom et le domaine sont tous les deux absents
+    message = "Veuillez saisir votre nom et choisir un domaine d'intérêt.";
+    // Prépare un message si aucune information n'est fournie
+  } else if (nom === "") {
+    // Vérifie si seul le nom est absent
+    message = "Veuillez saisir votre nom.";
+    // Prépare un message demandant le nom
+  } else if (domaine === "") {
+    // Vérifie si seul le domaine est absent
+    message = "Veuillez choisir un domaine d'intérêt.";
+    // Prépare un message demandant le choix du domaine
+  } else {
+    // Exécute ce bloc si le nom et le domaine sont bien renseignés
+    message = "Bienvenue " + nom + ". Votre domaine d'intérêt est : " + domaine + ".";
+  } 
+  
+  document.getElementById("messageResultat").textContent = message;
+  
+}
+
+</script>
+   <script> <!-- Ouvre une zone de code JavaScript dans la page HTML -->
+function changerTexte() { 
+document.getElementById("texteDynamique").textContent = "Le texte a été modifié grâce au DOM."; 
+} 
+</script>
+<script> <!-- Ouvre une zone de code JavaScript dans la page HTML -->
+function changerTexte() { 
+document.getElementById("texteDynamique").textContent = "Le texte a été modifié grâce au DOM."; 
+} 
+function changerCouleur() { 
+document.getElementById("texteDynamique").style.color = "red"; 
+</script> 
+<script> <!-- Ouvre une zone de code JavaScript dans la page HTML -->
+function changerTexte() { // Déclare une fonction appelée changerTexte
+document.getElementById("texteDynamique").textContent = "Le texte a été modifié grâce au DOM."; // Remplace le texte du paragraphe ciblé
+} // Ferme la fonction changerTexte
+
+function changerCouleur() { // Déclare une fonction appelée changerCouleur
+document.getElementById("texteDynamique").style.color = "red"; // Change la couleur du texte en rouge
+} 
+function changerStyle() { // Déclare une fonction appelée changerStyle
+  let element = document.getElementById("texteDynamique"); // Stocke l'élément HTML ciblé dans une variable
+  element.style.color = "white"; // Met le texte en blanc
+  element.style.backgroundColor = "#0b3d91"; // Change la couleur de fond en bleu foncé
+element.style.fontSize = "20px"; // Augmente la taille du texte
+element.style.fontWeight = "bold"; // Met le texte en gras
+element.style.padding = "12px"; // Ajoute un espace intérieur autour du texte
+element.style.borderRadius = "8px"; // Arrondit les coins du bloc
+}
+}function masquerTexte() { // Déclare une fonction appelée masquerTexte
+  document.getElementById("texteDynamique").style.display = "none"; // Masque le paragraphe dans la page
+} // Ferme la fonction masquerTexte
+
+function afficherTexte() { // Déclare une fonction appelée afficherTexte
+  document.getElementById("texteDynamique").style.display = "block"; // Réaffiche le paragraphe dans la page
+} // Ferme la fonction afficherTexte
+
+function reinitialiserTexte() { // Déclare une fonction appelée reinitialiserTexte
+  let element = document.getElementById("texteDynamique"); // Récupère le paragraphe dynamique
+  
+  element.textContent = "Ce texte initial sera modifié avec JavaScript."; // Remet le texte initial
+  element.style.color = "#222"; // Remet la couleur du texte par défaut
+  element.style.backgroundColor = "transparent"; // Supprime la couleur de fond ajoutée
+  element.style.fontSize = "16px"; // Remet une taille normale au texte
+  element.style.fontWeight = "normal"; // Supprime le gras
+  element.style.padding = "0"; // Supprime l'espace intérieur ajouté
+  element.style.borderRadius = "0"; // Supprime l'arrondi des coins
+  element.style.display = "block"; // S'assure que le paragraphe est visible
+} // Ferme la fonction reinitialiserTexte
+
+</script> 
+ </body>
+</html>
